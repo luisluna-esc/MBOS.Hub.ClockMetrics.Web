@@ -1,0 +1,123 @@
+<div class="flex flex-col gap-4">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div class="flex flex-col gap-0.5">
+      <h1 class="text-xl font-semibold text-foreground">{{ 'nav.employeeMonth' | translate }}</h1>
+      <p class="text-sm text-muted-foreground">{{ 'attendance.employeeMonth.subtitle' | translate }}</p>
+    </div>
+    @if (data()) {
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface disabled:opacity-50" [disabled]="downloading()" (click)="download('Pdf')">
+          {{ 'attendance.downloadPdf' | translate }}
+        </button>
+        <button type="button" class="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface disabled:opacity-50" [disabled]="downloading()" (click)="download('Excel')">
+          {{ 'attendance.downloadExcel' | translate }}
+        </button>
+      </div>
+    }
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:max-w-3xl">
+    <app-select [label]="'attendance.period' | translate" [options]="periodOptions()" [ngModel]="periodId()" (ngModelChange)="periodId.set($event)" />
+    <app-select [label]="'attendance.employee' | translate" [options]="employeeOptions()" [ngModel]="employeeId()" (ngModelChange)="employeeId.set($event)" [placeholder]="'attendance.pickEmployee' | translate" />
+  </div>
+
+  @if (errorCode()) {
+    <div class="rounded-lg border border-border">
+      <app-error-state [code]="errorCode()!" [actionLabel]="'common.retry' | translate" (action)="reload()" />
+    </div>
+  } @else if (loading()) {
+    <app-skeleton height="24rem" />
+  } @else if (data(); as month) {
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+      @for (stat of [
+        { label: 'attendance.totals.lateCount', value: '' + month.totals.lateCount },
+        { label: 'attendance.columns.lateAm', value: hm(month.totals.lateAmMinutes) },
+        { label: 'attendance.columns.latePm', value: hm(month.totals.latePmMinutes) },
+        { label: 'attendance.columns.lateTotal', value: hm(month.totals.lateMinutes) },
+        { label: 'attendance.totals.missingEntries', value: '' + month.totals.missingEntries },
+        { label: 'attendance.totals.missingExits', value: '' + month.totals.missingExits },
+        { label: 'attendance.totals.unmarkedDays', value: month.totals.unmarkedDays + (month.totals.unmarkedHalfDays ? ' + ' + month.totals.unmarkedHalfDays + ' ½' : '') }
+      ]; track stat.label) {
+        <div class="flex flex-col gap-1 rounded-lg border border-border bg-surface px-3 py-2">
+          <span class="text-xs text-muted-foreground">{{ stat.label | translate }}</span>
+          <span class="text-lg font-semibold text-foreground">{{ stat.value }}</span>
+        </div>
+      }
+    </div>
+
+    @if (month.period.isClosed) {
+      <p class="rounded-md border border-border bg-surface px-3 py-2 text-sm text-muted-foreground">{{ 'attendance.periodClosedHint' | translate }}</p>
+    } @else if (canEdit()) {
+      <p class="text-xs text-muted-foreground">{{ 'attendance.employeeMonth.clickHint' | translate }}</p>
+    }
+
+    <div class="overflow-x-auto rounded-lg border border-border">
+      <table class="w-full text-foreground min-w-[900px] text-sm">
+        <thead class="bg-primary text-primary-foreground">
+          <tr>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.columns.date' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.entryAm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.exitAm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.entryPm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.exitPm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.lateAm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.latePm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.lateTotal' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.worked' | translate }}</th>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.columns.observation' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (day of month.days; track day.date) {
+            <tr [class]="day.isWorkingDay && canEdit() ? 'cursor-pointer border-t border-border hover:bg-surface' : 'border-t border-border'" (click)="openDay(day)">
+              <td class="whitespace-nowrap px-2 py-1 text-muted-foreground">{{ dmy(day.date) }} - {{ weekdayKey(day.dayOfWeek) | translate }}</td>
+              @if (rowLabel(day); as label) {
+                <td colspan="8" class="px-2 py-1 text-center text-xs font-semibold uppercase" [class]="day.holidayName ? 'bg-warning/15 text-warning' : 'bg-surface text-muted-foreground'">{{ label }}</td>
+                <td class="px-2 py-1"></td>
+              } @else {
+                @for (slot of slots; track slot) {
+                  <td
+                    class="px-2 py-1 text-center font-mono font-semibold"
+                    [class.bg-warning/25]="isMissing(day, slot)"
+                    [class.bg-surface]="notApplicable(day, slot)"
+                  >
+                    {{ notApplicable(day, slot) ? '' : hhmm(day[slot]) }}
+                  </td>
+                }
+                <td class="px-2 py-1 text-center font-mono" [class.text-danger]="day.lateAmMinutes > 0">{{ hm(day.lateAmMinutes) }}</td>
+                <td class="px-2 py-1 text-center font-mono" [class.bg-surface]="day.isContinuous" [class.text-danger]="day.latePmMinutes > 0">{{ day.isContinuous ? '' : hm(day.latePmMinutes) }}</td>
+                <td class="px-2 py-1 text-center font-mono" [class.text-danger]="day.lateMinutes > 0">{{ hm(day.lateMinutes) }}</td>
+                <td class="px-2 py-1 text-center font-mono">{{ hm(day.workedMinutes) }}</td>
+                <td class="px-2 py-1">
+                  <div class="flex flex-wrap items-center gap-1">
+                    @if (day.isAdjusted) {
+                      <app-badge tone="info">{{ observation(day) }}</app-badge>
+                    } @else {
+                      @for (issue of day.issues; track issue) {
+                        <app-badge [tone]="issue === 'SIN_MARCAS' || issue === 'FALTA_MARCA' ? 'neutral' : 'warning'">{{ 'attendance.issues.' + issue | translate }}</app-badge>
+                      }
+                    }
+                  </div>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+        <tfoot class="border-t-2 border-border bg-surface font-semibold">
+          <tr>
+            <td colspan="5" class="px-2 py-2 text-right">{{ 'attendance.totalHrsMin' | translate }}</td>
+            <td class="px-2 py-2 text-center font-mono">{{ hm(month.totals.lateAmMinutes) }}</td>
+            <td class="px-2 py-2 text-center font-mono">{{ hm(month.totals.latePmMinutes) }}</td>
+            <td class="px-2 py-2 text-center font-mono">{{ hm(month.totals.lateMinutes) }}</td>
+            <td class="px-2 py-2 text-center font-mono">{{ hm(month.totals.workedMinutes) }}</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  } @else {
+    <div class="flex h-48 items-center justify-center rounded-lg border border-dashed border-border bg-surface text-sm text-muted-foreground">
+      {{ 'attendance.pickEmployeeHint' | translate }}
+    </div>
+  }
+</div>

@@ -1,0 +1,72 @@
+<div class="flex flex-col gap-6">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div class="flex flex-col gap-0.5">
+      <h1 class="text-xl font-semibold text-foreground">{{ 'nav.settings' | translate }}</h1>
+      <p class="text-sm text-muted-foreground">{{ 'attendance.settings.subtitle' | translate }}</p>
+    </div>
+    @if (authService.canWrite()) {
+      <button
+        type="button"
+        class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        [disabled]="form.invalid || saving() || loading()"
+        (click)="save()"
+      >
+        {{ 'dialog.save' | translate }}
+      </button>
+    }
+  </div>
+
+  @if (loading()) {
+    <app-skeleton height="24rem" />
+  } @else {
+    <form [formGroup]="form" class="flex flex-col gap-6">
+      <section class="flex flex-col gap-3">
+        <h2 class="text-base font-semibold text-foreground">{{ 'attendance.settings.schedule' | translate }}</h2>
+        <p class="text-xs text-muted-foreground">{{ 'attendance.settings.scheduleHint' | translate }}</p>
+        <div class="overflow-x-auto rounded-lg border border-border">
+          <table class="w-full text-foreground min-w-[700px] text-sm" formArrayName="schedules">
+            <thead class="bg-primary text-primary-foreground">
+              <tr>
+                <th class="px-2 py-2 text-left font-medium">{{ 'attendance.settings.day' | translate }}</th>
+                <th class="px-2 py-2 font-medium">{{ 'attendance.settings.working' | translate }}</th>
+                <th class="px-2 py-2 font-medium">{{ 'attendance.settings.start' | translate }}</th>
+                <th class="px-2 py-2 font-medium">{{ 'attendance.settings.breakStart' | translate }}</th>
+                <th class="px-2 py-2 font-medium">{{ 'attendance.settings.breakEnd' | translate }}</th>
+                <th class="px-2 py-2 font-medium">{{ 'attendance.settings.end' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (day of form.controls.schedules.controls; track day.controls.dayOfWeek.value; let i = $index) {
+                <tr class="border-t border-border" [formGroupName]="i">
+                  <td class="px-2 py-1 font-medium">{{ 'attendance.weekdaysLong.' + day.controls.dayOfWeek.value | translate }}</td>
+                  <td class="px-2 py-1 text-center"><app-checkbox formControlName="isWorkingDay" /></td>
+                  @for (field of ['startTime', 'breakStart', 'breakEnd', 'endTime']; track field) {
+                    <td class="px-2 py-1">
+                      @if (day.controls.isWorkingDay.value) {
+                        <app-input [formControlName]="field" placeholder="HH:mm" [patternRule]="timePattern" errorDisplay="icon" />
+                      }
+                    </td>
+                  }
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="flex flex-col gap-3">
+        <h2 class="text-base font-semibold text-foreground">{{ 'attendance.settings.rules' | translate }}</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <app-input formControlName="toleranceMinutes" type="number" [decimals]="0" [label]="'attendance.settings.tolerance' | translate" [hint]="'attendance.settings.toleranceHint' | translate" [required]="true" />
+          <app-input formControlName="duplicateWindowMinutes" type="number" [decimals]="0" [label]="'attendance.settings.duplicateWindow' | translate" [hint]="'attendance.settings.duplicateWindowHint' | translate" [required]="true" />
+          <app-input formControlName="minBreakMinutes" type="number" [decimals]="0" [label]="'attendance.settings.minBreak' | translate" [hint]="'attendance.settings.minBreakHint' | translate" [required]="true" />
+          <app-input formControlName="periodCutoffDay" type="number" [decimals]="0" [label]="'attendance.settings.cutoff' | translate" [hint]="'attendance.settings.cutoffHint' | translate" [required]="true" />
+          <app-input formControlName="middayFrom" [label]="'attendance.settings.middayFrom' | translate" [hint]="'attendance.settings.middayFromHint' | translate" [patternRule]="timePattern" [required]="true" />
+          <app-input formControlName="afternoonExitFrom" [label]="'attendance.settings.afternoonExitFrom' | translate" [hint]="'attendance.settings.afternoonExitFromHint' | translate" [patternRule]="timePattern" [required]="true" />
+          <app-input formControlName="earliestNormalTime" [label]="'attendance.settings.earliest' | translate" [patternRule]="timePattern" [required]="true" />
+          <app-input formControlName="latestNormalTime" [label]="'attendance.settings.latest' | translate" [hint]="'attendance.settings.oddHint' | translate" [patternRule]="timePattern" [required]="true" />
+        </div>
+      </section>
+    </form>
+  }
+</div>

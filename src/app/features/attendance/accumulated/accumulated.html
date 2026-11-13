@@ -1,0 +1,67 @@
+<div class="flex flex-col gap-4">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div class="flex flex-col gap-0.5">
+      <h1 class="text-xl font-semibold text-foreground">{{ 'nav.accumulated' | translate }}</h1>
+      <p class="text-sm text-muted-foreground">{{ 'attendance.accumulated.subtitle' | translate }}</p>
+    </div>
+    @if (data()) {
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50" [disabled]="downloading()" (click)="download('Excel')">
+          {{ 'attendance.downloadExcel' | translate }}
+        </button>
+        <button type="button" class="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface disabled:opacity-50" [disabled]="downloading()" (click)="download('Pdf')">
+          {{ 'attendance.downloadPdf' | translate }}
+        </button>
+      </div>
+    }
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:max-w-4xl">
+    <app-select [label]="'attendance.accumulated.from' | translate" [options]="periodOptions()" [ngModel]="fromId()" (ngModelChange)="fromId.set($event)" />
+    <app-select [label]="'attendance.accumulated.to' | translate" [options]="periodOptions()" [ngModel]="toId()" (ngModelChange)="toId.set($event)" />
+    <app-select [label]="'attendance.group' | translate" [options]="groupOptions()" [ngModel]="groupId()" (ngModelChange)="groupId.set($event)" [placeholder]="'attendance.allGroups' | translate" />
+  </div>
+
+  @if (errorCode()) {
+    <div class="rounded-lg border border-border">
+      <app-error-state [code]="errorCode()!" [description]="'attendance.accumulated.invalidRange' | translate" [actionLabel]="'common.retry' | translate" (action)="reload()" />
+    </div>
+  } @else if (loading()) {
+    <app-skeleton height="20rem" />
+  } @else if (data(); as acc) {
+    <div class="overflow-x-auto rounded-lg border border-border">
+      <table class="w-full text-foreground text-sm">
+        <thead class="bg-primary text-primary-foreground">
+          <tr>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.summary.number' | translate }}</th>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.summary.name' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.group' | translate }}</th>
+            @for (p of acc.periods; track p.attendancePeriodId) {
+              <th class="px-2 py-2 font-medium">{{ monthKey(p.month) | translate }} {{ p.year }}</th>
+            }
+            <th class="px-2 py-2 font-medium">{{ 'attendance.accumulated.total' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of acc.rows; track row.employee.employeeId; let i = $index) {
+            <tr class="border-t border-border">
+              <td class="px-2 py-1 text-center text-muted-foreground">{{ i + 1 }}</td>
+              <td class="px-2 py-1 font-medium text-foreground">{{ row.employee.fullName }}</td>
+              <td class="px-2 py-1 text-center text-muted-foreground">{{ row.employee.workGroupName }}</td>
+              @for (minutes of row.lateMinutesByPeriod; track $index) {
+                <td class="px-2 py-1 text-center font-mono">{{ hm(minutes) }}</td>
+              }
+              <td class="px-2 py-1 text-center font-mono font-semibold" [class.text-danger]="row.totals.lateMinutes > 0">{{ hm(row.totals.lateMinutes) }}</td>
+            </tr>
+          } @empty {
+            <tr><td [attr.colspan]="acc.periods.length + 4" class="px-2 py-6 text-center text-muted-foreground">{{ 'table.empty' | translate }}</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div class="flex h-40 items-center justify-center rounded-lg border border-dashed border-border bg-surface text-sm text-muted-foreground">
+      {{ 'attendance.noPeriods' | translate }}
+    </div>
+  }
+</div>

@@ -1,0 +1,549 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "logout": "Sign out",
+    "saved": "Saved successfully.",
+    "deleted": "Deleted successfully.",
+    "saveError": "It could not be saved.",
+    "loadError": "The information could not be loaded.",
+    "retry": "Retry"
+  },
+  "dialog": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "save": "Save"
+  },
+  "filters": {
+    "clear": "Clear"
+  },
+  "language": {
+    "select": "Language"
+  },
+  "table": {
+    "actions": "Options",
+    "empty": "No data to display.",
+    "next": "Next",
+    "pageInfo": "Page {{page}} of {{total}}",
+    "pageSize": "Per page:",
+    "previous": "Previous"
+  },
+  "styleGuide": {
+    "title": "Style guide",
+    "howTo": {
+      "title": "Colors are changed in a single place",
+      "description": "ClockMetrics uses the same colors as InvenTrack, in light and dark mode. They are all in the file below: change a value there and the whole app updates."
+    },
+    "brandScale": "Brand scale",
+    "semanticTokens": "Colors by purpose",
+    "semanticHint": "Components only use these names, never a fixed color.",
+    "statusColors": "Status colors",
+    "statusHint": "For difference statuses and errors. They stay the same with any brand color.",
+    "usage": {
+      "background": "Screen background",
+      "surface": "Cards, menu and dialogs",
+      "foreground": "Main text",
+      "mutedForeground": "Secondary text",
+      "border": "Borders and lines",
+      "primary": "Main button and highlights",
+      "primaryForeground": "Text on the main color"
+    },
+    "status": {
+      "success": "No difference / Resolved",
+      "warning": "Pending",
+      "info": "Justified",
+      "danger": "Money missing",
+      "neutral": "Not submitted"
+    },
+    "buttons": "Buttons",
+    "primaryButton": "Save count",
+    "dangerButton": "Close period",
+    "disabledButton": "Disabled",
+    "withTooltip": "With help",
+    "tooltipText": "Help text",
+    "hintTitle": "What is the ACMS balance?",
+    "hintBody": "It is the local fund balance at month close, as shown in ACMS.",
+    "form": "Form",
+    "table": "Table",
+    "fields": {
+      "church": "Church",
+      "cash": "Cash (Bs)",
+      "type": "Type",
+      "countDate": "Count date",
+      "signedByPastor": "Signed by the pastor",
+      "submitted": "Count submitted"
+    }
+  },
+  "login": {
+    "title": "Sign in",
+    "welcomeTitle": "Welcome back",
+    "welcomeDescription": "Track attendance and hours worked from one place, simply and securely.",
+    "password": "Password",
+    "submit": "Sign in",
+    "error": "Wrong username or password.",
+    "username": "Username"
+  },
+  "layout": {
+    "collapseMenu": "Collapse menu",
+    "expandMenu": "Expand menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "nav": {
+    "home": "Home",
+    "admin": "Administration",
+    "users": "Users",
+    "roles": "Roles",
+    "auditLogs": "Audit log",
+    "attendance": "Attendance",
+    "import": "Import time clock",
+    "employeeMonth": "Employee record",
+    "issues": "Inconsistencies",
+    "reports": "Reports",
+    "monthSummary": "Monthly summary",
+    "accumulated": "Accumulated",
+    "catalogs": "Catalogs",
+    "employees": "Employees",
+    "workGroups": "Groups",
+    "holidays": "Holidays",
+    "periods": "Periods",
+    "settings": "Schedule and rules"
+  },
+  "placeholder": {
+    "description": "This screen is still under construction.",
+    "comingSoon": "Coming soon"
+  },
+  "months": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "catalogs": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "deleteMessage": "Delete \"{{name}}\"? This cannot be undone.",
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "filters": {
+      "search": "Search by name",
+      "status": "Status"
+    },
+    "columns": {
+      "name": "Name",
+      "status": "Status",
+      "fullName": "Full name",
+      "ci": "ID number",
+      "email": "Email",
+      "phone": "Phone",
+      "code": "Code",
+      "type": "Type"
+    }
+  },
+  "admin": {
+    "columns": {
+      "roles": "Roles",
+      "lastLogin": "Last login",
+      "description": "Description",
+      "users": "Users",
+      "menus": "Menus",
+      "user": "User",
+      "table": "Section",
+      "action": "Action",
+      "date": "Date",
+      "changes": "Changed fields",
+      "time": "Time",
+      "record": "Record"
+    },
+    "users": {
+      "new": "New user",
+      "newTitle": "New user",
+      "editTitle": "Edit user",
+      "deleteTitle": "Delete user",
+      "deleteMessage": "Delete \"{{name}}\"? If they already recorded data it cannot be deleted: deactivate them instead.",
+      "cannotDeleteSelf": "You cannot delete your own user.",
+      "search": "Search by name, username or ID",
+      "roles": "Roles",
+      "rolesTitle": "Roles of {{name}}",
+      "noRoles": "No roles",
+      "never": "Never",
+      "newPassword": "New password",
+      "newPasswordHint": "Leave it empty to keep it. If filled, the account is also unlocked.",
+      "states": {
+        "active": "Active",
+        "locked": "Locked",
+        "inactive": "Inactive"
+      },
+      "username": "Username",
+      "usernameHint": "Used to sign in. It is built from the name; you can edit it.",
+      "usernameInvalid": "It must be name.surname: lowercase letters without accents, one dot and, if needed, a number at the end.",
+      "password": "Password",
+      "passwordHint": "At least 8 characters."
+    },
+    "roles": {
+      "subtitle": "What each role can do is fixed in the system. Here you choose which menus it sees.",
+      "new": "New role",
+      "newTitle": "New role",
+      "editTitle": "Edit role",
+      "deleteTitle": "Delete role",
+      "deleteWithUsers": "\"{{name}}\" has {{count}} user(s): they lose this role if it is deleted. Continue?",
+      "protected": "The M-BOS role cannot be renamed, deactivated or deleted.",
+      "newRoleHint": "A new role can only view: recording data is limited to M-BOS and Analista.",
+      "menus": "Menus",
+      "menusTitle": "Menus of {{name}}",
+      "protectedMenus": "The M-BOS role always sees every menu.",
+      "deleteMessage": "Delete the role \"{{name}}\"? Users who have it will lose it. This cannot be undone."
+    },
+    "audit": {
+      "subtitle": "Who created, edited or deleted each record, the day and the time. Kept for 3 years.",
+      "system": "System",
+      "detail": "View detail",
+      "detailTitle": "Audit record #{{id}}",
+      "field": "Field",
+      "before": "Before",
+      "after": "After",
+      "noChanges": "No value changes.",
+      "maskedHint": "Passwords and tokens are stored hidden (***).",
+      "actions": {
+        "INSERT": "Created",
+        "UPDATE": "Edited",
+        "DELETE": "Deleted"
+      },
+      "tables": {
+        "app_user": "Users",
+        "app_user_role": "User roles",
+        "role": "Roles",
+        "menu": "Menus",
+        "menu_role": "Role menus",
+        "employee": "Employees",
+        "work_group": "Groups",
+        "attendance_adjustment": "Attendance adjustments",
+        "attendance_period": "Periods",
+        "attendance_import": "Imports",
+        "holiday": "Holidays",
+        "work_schedule": "Schedule",
+        "attendance_setting": "Attendance rules"
+      },
+      "fieldCount": "{{count}} fields"
+    }
+  },
+  "errorState": {
+    "400": {
+      "title": "Invalid request",
+      "description": "The request could not be processed. Check the data and try again."
+    },
+    "401": {
+      "title": "Unauthorized",
+      "description": "You need to sign in to access this content."
+    },
+    "403": {
+      "title": "Access denied",
+      "description": "You don't have permission to view this section."
+    },
+    "404": {
+      "title": "Page not found",
+      "description": "The content you're looking for doesn't exist or was moved."
+    },
+    "500": {
+      "title": "Server error",
+      "description": "Something unexpected happened. Please try again later."
+    },
+    "503": {
+      "title": "Service unavailable",
+      "description": "The service isn't available right now. Please try again later."
+    },
+    "default": {
+      "title": "An error occurred",
+      "description": "Something went wrong. Please try again."
+    }
+  },
+  "reports": {
+    "downloading": "Downloading..."
+  },
+  "charts": {
+    "showTable": "Show table",
+    "showChart": "Show chart",
+    "report": "Report",
+    "reportError": "The chart report could not be generated.",
+    "reportFormats": {
+      "pdf": "PDF (chart and table)",
+      "excel": "Excel",
+      "txt": "TXT"
+    }
+  },
+  "shortcuts": {
+    "keySpace": "Space",
+    "filterEnter": "In filters: search right away",
+    "switchToggle": "Switch (Yes / No): toggle it",
+    "dateOpen": "Date: open the calendar (move with arrows)",
+    "dateMonth": "Open calendar: previous or next month",
+    "dateDay": "Date: one day more or less",
+    "dateToday": "Date: today",
+    "dateType": "Date: type it (13102026, 13/10/26 or 13/10)",
+    "selectPick": "Open list: choose (Tab also moves to the next field)",
+    "selectMove": "Open list: move between options",
+    "selectType": "Option list: type the first letters to choose",
+    "selectOpen": "Option list: open it",
+    "prevField": "Go back to the previous field",
+    "nextField": "Go to the next field",
+    "groupFields": "Fields and filters",
+    "or": "or",
+    "title": "Keyboard shortcuts",
+    "onMac": "Mac keys",
+    "onWindows": "Windows keys",
+    "then": "then",
+    "footer": "Letter shortcuts do not work while typing in a field; Save, Esc and Ctrl/⌘ shortcuts do.",
+    "groupGeneral": "General",
+    "groupForms": "Forms",
+    "groupLists": "Lists",
+    "groupGoTo": "Go to",
+    "palette": "Search a screen and go to it",
+    "help": "Show this shortcut list",
+    "sidebar": "Show or hide the side menu",
+    "cancel": "Close the open window",
+    "save": "Save",
+    "search": "Go to the list search box",
+    "goHome": "Home",
+    "paletteSearch": "Type the name of a screen...",
+    "paletteEmpty": "No screens with that name.",
+    "paletteHint": "↑ ↓ to choose, Enter to open, Esc to close",
+    "goEmployeeMonth": "Employee record",
+    "goIssues": "Inconsistencies",
+    "goSummary": "Monthly summary"
+  },
+  "attendance": {
+    "closed": "closed",
+    "open": "open",
+    "period": "Period",
+    "employee": "Employee",
+    "group": "Group",
+    "allGroups": "All groups",
+    "noGroup": "No group",
+    "pickEmployee": "Choose an employee",
+    "pickEmployeeHint": "Choose the period and the employee to see their record.",
+    "downloadPdf": "Download PDF",
+    "downloadExcel": "Download Excel",
+    "reportError": "The report could not be generated.",
+    "periodClosedHint": "This period is closed: no adjustments can be made. Reopen it in Catalogs › Periods.",
+    "holiday": "Holiday",
+    "totalHrsMin": "TOTAL Hrs/Min",
+    "fromTo": "from {{from}} to {{to}}",
+    "noPeriods": "There are no periods yet: import the time clock file.",
+    "yes": "Yes",
+    "no": "No",
+    "year": "Year",
+    "month": "Month",
+    "columns": {
+      "date": "Date",
+      "entryAm": "AM in",
+      "exitAm": "AM out",
+      "entryPm": "PM in",
+      "exitPm": "PM out",
+      "lateAm": "AM late",
+      "latePm": "PM late",
+      "lateTotal": "Total late",
+      "worked": "Hours worked",
+      "observation": "Notes",
+      "rawMarks": "Time clock marks",
+      "issues": "Inconsistencies"
+    },
+    "totals": {
+      "lateCount": "Late arrivals",
+      "missingEntries": "Missing check-ins",
+      "missingExits": "Missing check-outs",
+      "unmarkedDays": "Unmarked days",
+      "unmarkedHalfDays": "Unmarked half days",
+      "justifiedDays": "Justified days",
+      "pending": "To review"
+    },
+    "issues": {
+      "MARCAS_EXTRA": "Extra marks",
+      "DUPLICADA": "Repeated mark",
+      "RECESO_CORTO": "Short break",
+      "HORA_INUSUAL": "Unusual time",
+      "FALTA_MARCA": "Missing mark",
+      "SIN_MARCAS": "No marks",
+      "MARCAS_DIA_NO_LABORAL": "Marked on a non-working day"
+    },
+    "justifications": {
+      "PERMISO": "Leave",
+      "COMISION": "Assignment",
+      "BAJA_MEDICA": "Sick leave",
+      "VACACION": "Vacation",
+      "OLVIDO_MARCAR": "Forgot to mark",
+      "FALLA_BIOMETRICO": "Time clock failure",
+      "OTRO": "Other"
+    },
+    "adjust": {
+      "title": "Adjust day · {{name}}",
+      "remove": "Remove adjustment",
+      "rawMarks": "Time clock",
+      "noRawMarks": "no marks",
+      "overrideMarks": "Correct the marks",
+      "overrideHint": "These times replace the time clock ones for the calculation only; the originals are kept.",
+      "justification": "Justification",
+      "noJustification": "No justification",
+      "excuseLateAm": "Do not count the morning late arrival",
+      "excuseLatePm": "Do not count the afternoon late arrival",
+      "excuseMissing": "Do not count missing marks (nor the unmarked day)",
+      "reason": "Reason",
+      "timeFormat": "Format HH:mm",
+      "removed": "Adjustment removed.",
+      "marksCorrected": "Marks corrected",
+      "lateExcused": "Late arrival justified"
+    },
+    "employeeMonth": {
+      "subtitle": "Work day record: yellow cells are missing marks.",
+      "clickHint": "Click a day to correct or justify it."
+    },
+    "import": {
+      "subtitle": "Upload the file exported by the time clock (.xls). Uploading a month again replaces its marks; HR adjustments are kept.",
+      "change": "click to change",
+      "drop": "Drop the time clock file here or click to choose it",
+      "formats": "Time clock .xls or .xlsx, up to 10 MB",
+      "upload": "Import",
+      "uploading": "Importing…",
+      "done": "File imported.",
+      "error": "The file could not be imported.",
+      "resultTitle": "{{file}} was imported",
+      "dates": "Dates",
+      "employees": "Employees",
+      "days": "Days",
+      "marks": "Marks",
+      "periods": "Periods",
+      "newEmployeesTitle": "{{count}} new employees: assign their group and decide if they appear in reports.",
+      "goEmployees": "Go to Employees",
+      "renamed": "Name changed in the time clock",
+      "history": "Previous imports",
+      "importedAt": "Date",
+      "file": "File",
+      "newEmployees": "New",
+      "importedBy": "Imported by"
+    },
+    "issuesPage": {
+      "subtitle": "Days the system could not resolve on its own. Click one to correct or justify it.",
+      "includeReviewed": "Also show reviewed days",
+      "empty": "No inconsistencies to review.",
+      "count": "{{count}} days",
+      "reviewed": "Reviewed"
+    },
+    "summary": {
+      "subtitle": "Attendance summary per employee, like the HR monthly sheet.",
+      "downloadSummaryExcel": "Summary in Excel",
+      "downloadSummaryPdf": "Summary in PDF",
+      "downloadEmployeesPdf": "Everyone’s record (PDF)",
+      "downloadEmployeesExcel": "Everyone’s record (Excel)",
+      "number": "No.",
+      "code": "CODE",
+      "name": "Full name",
+      "lateTime": "Late time",
+      "noteExits": "* Missing check-outs: as if they left before the morning and afternoon end time.",
+      "noteDays": "** Unmarked days: no marks all day, as if they did not come to work. Half day: the whole morning or afternoon.",
+      "notePending": "To review: days with inconsistencies nobody has reviewed yet. Justified items are not counted."
+    },
+    "accumulated": {
+      "subtitle": "Accumulated late time over several months, from most to least late.",
+      "from": "From",
+      "to": "To",
+      "total": "Accumulated total",
+      "invalidRange": "Choose a start period before or equal to the end one (up to 24 months)."
+    },
+    "employees": {
+      "subtitle": "Created automatically on import (by the time clock AC-No). Assign the group and choose who appears in reports.",
+      "search": "Search by name or AC-No",
+      "inReports": "In reports",
+      "inReportsLong": "Appears in the record and the summaries",
+      "deviceCode": "AC-No",
+      "deviceName": "Name in the time clock",
+      "editTitle": "Edit employee",
+      "deviceInfo": "AC-No {{code}} · in the time clock: {{name}}",
+      "reportName": "Name for reports"
+    },
+    "groups": {
+      "subtitle": "Groups used to split the reports. The order defines how they appear.",
+      "new": "New group",
+      "order": "Order",
+      "employees": "Employees",
+      "deleteTitle": "Delete group",
+      "editTitle": "Edit group",
+      "newTitle": "New group"
+    },
+    "holidays": {
+      "subtitle": "No late arrivals or absences are counted that day. Add movable and decreed holidays here.",
+      "new": "New holiday",
+      "deleteTitle": "Delete holiday",
+      "editTitle": "Edit holiday",
+      "newTitle": "New holiday"
+    },
+    "periods": {
+      "subtitle": "Control months (21st to 20th). Created on import; close them once the month is reviewed.",
+      "new": "New period",
+      "start": "From",
+      "end": "To",
+      "days": "Days",
+      "reopenToEdit": "Reopen it to change its dates.",
+      "close": "Close",
+      "reopen": "Reopen",
+      "closeTitle": "Close period",
+      "closeMessage": "Close {{name}}? Nothing in those dates can be imported or adjusted until it is reopened.",
+      "editTitle": "Edit period",
+      "newTitle": "New period",
+      "formHint": "Dates cannot overlap another period."
+    },
+    "settings": {
+      "subtitle": "Work schedule and calculation rules. A change shows up instantly in every screen and report.",
+      "schedule": "Schedule",
+      "scheduleHint": "Without a break it is a continuous day (like Friday): only check-in and check-out count.",
+      "day": "Day",
+      "working": "Working",
+      "start": "Start",
+      "breakStart": "Break start",
+      "breakEnd": "Break end",
+      "end": "End",
+      "rules": "Rules",
+      "tolerance": "Tolerance (min)",
+      "toleranceHint": "After the tolerance, late time counts from the start time.",
+      "duplicateWindow": "Repeated mark (min)",
+      "duplicateWindowHint": "Two marks closer than this are the same one.",
+      "minBreak": "Minimum break (min)",
+      "minBreakHint": "A shorter break is flagged for review.",
+      "cutoff": "Cutoff day",
+      "cutoffHint": "With 20, August runs from 07/21 to 08/20.",
+      "middayFrom": "Midday from",
+      "middayFromHint": "Before this time, the first mark is the check-in.",
+      "afternoonExitFrom": "Afternoon check-out from",
+      "afternoonExitFromHint": "From this time on, the mark is the check-out.",
+      "earliest": "Normal time from",
+      "latest": "Normal time to",
+      "oddHint": "Marks outside this range are flagged as unusual."
+    },
+    "weekdays": {
+      "1": "Mon",
+      "2": "Tue",
+      "3": "Wed",
+      "4": "Thu",
+      "5": "Fri",
+      "6": "Sat",
+      "7": "Sun"
+    },
+    "weekdaysLong": {
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday",
+      "7": "Sunday"
+    }
+  }
+}

@@ -1,0 +1,549 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "logout": "Sair",
+    "saved": "Salvo com sucesso.",
+    "deleted": "Excluído com sucesso.",
+    "saveError": "Não foi possível salvar.",
+    "loadError": "Não foi possível carregar as informações.",
+    "retry": "Tentar novamente"
+  },
+  "dialog": {
+    "cancel": "Cancelar",
+    "close": "Fechar",
+    "confirm": "Confirmar",
+    "save": "Salvar"
+  },
+  "filters": {
+    "clear": "Limpar"
+  },
+  "language": {
+    "select": "Idioma"
+  },
+  "table": {
+    "actions": "Opções",
+    "empty": "Não há dados para mostrar.",
+    "next": "Próxima",
+    "pageInfo": "Página {{page}} de {{total}}",
+    "pageSize": "Por página:",
+    "previous": "Anterior"
+  },
+  "styleGuide": {
+    "title": "Guia de estilo",
+    "howTo": {
+      "title": "As cores são alteradas em um só lugar",
+      "description": "O ClockMetrics usa as mesmas cores do InvenTrack, no modo claro e escuro. Todas estão no arquivo abaixo: altere um valor ali e todo o aplicativo é atualizado."
+    },
+    "brandScale": "Escala da marca",
+    "semanticTokens": "Cores por função",
+    "semanticHint": "Os componentes usam apenas estes nomes, nunca uma cor fixa.",
+    "statusColors": "Cores de status",
+    "statusHint": "Para o status das diferenças e os erros. Ficam iguais com qualquer cor de marca.",
+    "usage": {
+      "background": "Fundo da tela",
+      "surface": "Cartões, menu e diálogos",
+      "foreground": "Texto principal",
+      "mutedForeground": "Texto secundário",
+      "border": "Bordas e linhas",
+      "primary": "Botão principal e destaques",
+      "primaryForeground": "Texto sobre a cor principal"
+    },
+    "status": {
+      "success": "Sem diferença / Resolvida",
+      "warning": "Pendente",
+      "info": "Justificada",
+      "danger": "Falta dinheiro",
+      "neutral": "Não apresentou"
+    },
+    "buttons": "Botões",
+    "primaryButton": "Salvar contagem",
+    "dangerButton": "Fechar período",
+    "disabledButton": "Desabilitado",
+    "withTooltip": "Com ajuda",
+    "tooltipText": "Texto de ajuda",
+    "hintTitle": "O que é o saldo ACMS?",
+    "hintBody": "É o saldo do fundo local no fechamento do mês, conforme o ACMS.",
+    "form": "Formulário",
+    "table": "Tabela",
+    "fields": {
+      "church": "Igreja",
+      "cash": "Dinheiro (Bs)",
+      "type": "Tipo",
+      "countDate": "Data da contagem",
+      "signedByPastor": "Assinado pelo pastor",
+      "submitted": "Apresentou contagem"
+    }
+  },
+  "login": {
+    "title": "Entrar",
+    "welcomeTitle": "Bem-vindo de volta",
+    "welcomeDescription": "Controle a presença e as horas trabalhadas em um só lugar, de forma simples e segura.",
+    "password": "Senha",
+    "submit": "Entrar",
+    "error": "Usuário ou senha incorretos.",
+    "username": "Usuário"
+  },
+  "layout": {
+    "collapseMenu": "Recolher menu",
+    "expandMenu": "Expandir menu",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "nav": {
+    "home": "Início",
+    "admin": "Administração",
+    "users": "Usuários",
+    "roles": "Funções",
+    "auditLogs": "Auditoria",
+    "attendance": "Frequência",
+    "import": "Importar relógio de ponto",
+    "employeeMonth": "Registro por funcionário",
+    "issues": "Inconsistências",
+    "reports": "Relatórios",
+    "monthSummary": "Resumo do mês",
+    "accumulated": "Acumulado",
+    "catalogs": "Cadastros",
+    "employees": "Funcionários",
+    "workGroups": "Grupos",
+    "holidays": "Feriados",
+    "periods": "Períodos",
+    "settings": "Horário e regras"
+  },
+  "placeholder": {
+    "description": "Esta tela ainda está em construção.",
+    "comingSoon": "Em breve"
+  },
+  "months": {
+    "1": "Janeiro",
+    "2": "Fevereiro",
+    "3": "Março",
+    "4": "Abril",
+    "5": "Maio",
+    "6": "Junho",
+    "7": "Julho",
+    "8": "Agosto",
+    "9": "Setembro",
+    "10": "Outubro",
+    "11": "Novembro",
+    "12": "Dezembro"
+  },
+  "catalogs": {
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "deleteMessage": "Excluir \"{{name}}\"? Esta ação não pode ser desfeita.",
+    "actions": {
+      "edit": "Editar",
+      "delete": "Excluir"
+    },
+    "filters": {
+      "search": "Buscar por nome",
+      "status": "Status"
+    },
+    "columns": {
+      "name": "Nome",
+      "status": "Status",
+      "fullName": "Nome completo",
+      "ci": "Documento",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "code": "Código",
+      "type": "Tipo"
+    }
+  },
+  "admin": {
+    "columns": {
+      "roles": "Perfis",
+      "lastLogin": "Último acesso",
+      "description": "Descrição",
+      "users": "Usuários",
+      "menus": "Menus",
+      "user": "Usuário",
+      "table": "Seção",
+      "action": "Ação",
+      "date": "Data",
+      "changes": "Campos alterados",
+      "time": "Hora",
+      "record": "Registro"
+    },
+    "users": {
+      "new": "Novo usuário",
+      "newTitle": "Novo usuário",
+      "editTitle": "Editar usuário",
+      "deleteTitle": "Excluir usuário",
+      "deleteMessage": "Excluir \"{{name}}\"? Se já registrou dados não poderá ser excluído: nesse caso desative-o.",
+      "cannotDeleteSelf": "Você não pode excluir seu próprio usuário.",
+      "search": "Buscar por nome, usuário ou documento",
+      "roles": "Perfis",
+      "rolesTitle": "Perfis de {{name}}",
+      "noRoles": "Sem perfis",
+      "never": "Nunca",
+      "newPassword": "Nova senha",
+      "newPasswordHint": "Deixe vazia para manter. Se preenchida, a conta também é desbloqueada.",
+      "states": {
+        "active": "Ativo",
+        "locked": "Bloqueado",
+        "inactive": "Inativo"
+      },
+      "username": "Usuário",
+      "usernameHint": "Usado para entrar. É montado a partir do nome; você pode corrigir.",
+      "usernameInvalid": "Deve ser nome.sobrenome: letras minúsculas sem acentos, um ponto e, se precisar, um número no final.",
+      "password": "Senha",
+      "passwordHint": "Mínimo 8 caracteres."
+    },
+    "roles": {
+      "subtitle": "O que cada perfil pode fazer é fixo no sistema. Aqui se escolhe quais menus vê.",
+      "new": "Novo perfil",
+      "newTitle": "Novo perfil",
+      "editTitle": "Editar perfil",
+      "deleteTitle": "Excluir perfil",
+      "deleteWithUsers": "\"{{name}}\" tem {{count}} usuário(s): eles perdem este perfil ao excluí-lo. Continuar?",
+      "protected": "O perfil M-BOS não pode ser renomeado, desativado nem excluído.",
+      "newRoleHint": "Um perfil novo só consulta: registrar dados fica para M-BOS e Analista.",
+      "menus": "Menus",
+      "menusTitle": "Menus de {{name}}",
+      "protectedMenus": "O perfil M-BOS sempre vê todos os menus.",
+      "deleteMessage": "Excluir o perfil \"{{name}}\"? Os usuários que o têm o perdem. Esta ação não pode ser desfeita."
+    },
+    "audit": {
+      "subtitle": "Quem criou, editou ou excluiu cada dado, o dia e a hora. Mantido por 3 anos.",
+      "system": "Sistema",
+      "detail": "Ver detalhe",
+      "detailTitle": "Registro de auditoria #{{id}}",
+      "field": "Campo",
+      "before": "Antes",
+      "after": "Depois",
+      "noChanges": "Sem alterações de valores.",
+      "maskedHint": "Senhas e tokens são guardados ocultos (***).",
+      "actions": {
+        "INSERT": "Criou",
+        "UPDATE": "Editou",
+        "DELETE": "Excluiu"
+      },
+      "tables": {
+        "app_user": "Usuários",
+        "app_user_role": "Perfis de usuário",
+        "role": "Perfis",
+        "menu": "Menus",
+        "menu_role": "Menus de perfil",
+        "employee": "Funcionários",
+        "work_group": "Grupos",
+        "attendance_adjustment": "Ajustes de frequência",
+        "attendance_period": "Períodos",
+        "attendance_import": "Importações",
+        "holiday": "Feriados",
+        "work_schedule": "Horário",
+        "attendance_setting": "Regras de frequência"
+      },
+      "fieldCount": "{{count}} campos"
+    }
+  },
+  "errorState": {
+    "400": {
+      "title": "Solicitação inválida",
+      "description": "Não foi possível processar a solicitação. Verifique os dados e tente novamente."
+    },
+    "401": {
+      "title": "Não autorizado",
+      "description": "Você precisa entrar para acessar este conteúdo."
+    },
+    "403": {
+      "title": "Acesso negado",
+      "description": "Você não tem permissão para ver esta seção."
+    },
+    "404": {
+      "title": "Página não encontrada",
+      "description": "O conteúdo que você procura não existe ou foi movido."
+    },
+    "500": {
+      "title": "Erro do servidor",
+      "description": "Ocorreu um problema inesperado. Tente novamente mais tarde."
+    },
+    "503": {
+      "title": "Serviço indisponível",
+      "description": "O serviço não está disponível no momento. Tente novamente mais tarde."
+    },
+    "default": {
+      "title": "Ocorreu um erro",
+      "description": "Algo deu errado. Tente novamente."
+    }
+  },
+  "reports": {
+    "downloading": "Baixando..."
+  },
+  "charts": {
+    "showTable": "Ver tabela",
+    "showChart": "Ver gráfico",
+    "report": "Relatório",
+    "reportError": "Não foi possível gerar o relatório do gráfico.",
+    "reportFormats": {
+      "pdf": "PDF (gráfico e tabela)",
+      "excel": "Excel",
+      "txt": "TXT"
+    }
+  },
+  "shortcuts": {
+    "keySpace": "Espaço",
+    "filterEnter": "Nos filtros: buscar na hora",
+    "switchToggle": "Interruptor (Sim / Não): alterá-lo",
+    "dateOpen": "Data: abrir o calendário (percorre-se com as setas)",
+    "dateMonth": "Calendário aberto: mês anterior ou seguinte",
+    "dateDay": "Data: um dia a mais ou a menos",
+    "dateToday": "Data: hoje",
+    "dateType": "Data: digitá-la (13102026, 13/10/26 ou 13/10)",
+    "selectPick": "Lista aberta: escolher (com Tab, também passa ao próximo campo)",
+    "selectMove": "Lista aberta: mover-se entre as opções",
+    "selectType": "Lista de opções: digitar as primeiras letras para escolher",
+    "selectOpen": "Lista de opções: abri-la",
+    "prevField": "Voltar ao campo anterior",
+    "nextField": "Ir para o próximo campo",
+    "groupFields": "Campos e filtros",
+    "or": "ou",
+    "title": "Atalhos de teclado",
+    "onMac": "Teclas do Mac",
+    "onWindows": "Teclas do Windows",
+    "then": "e depois",
+    "footer": "Os atalhos de letras não funcionam enquanto você digita em um campo; Salvar, Esc e os de Ctrl/⌘ sim.",
+    "groupGeneral": "Geral",
+    "groupForms": "Formulários",
+    "groupLists": "Listas",
+    "groupGoTo": "Ir para",
+    "palette": "Buscar uma tela e ir até ela",
+    "help": "Ver esta lista de atalhos",
+    "sidebar": "Mostrar ou ocultar o menu lateral",
+    "cancel": "Fechar a janela aberta",
+    "save": "Salvar",
+    "search": "Ir para a busca da lista",
+    "goHome": "Início",
+    "paletteSearch": "Digite o nome de uma tela...",
+    "paletteEmpty": "Não há telas com esse nome.",
+    "paletteHint": "↑ ↓ para escolher, Enter para abrir, Esc para fechar",
+    "goEmployeeMonth": "Registro por funcionário",
+    "goIssues": "Inconsistências",
+    "goSummary": "Resumo do mês"
+  },
+  "attendance": {
+    "closed": "fechado",
+    "open": "aberto",
+    "period": "Período",
+    "employee": "Funcionário",
+    "group": "Grupo",
+    "allGroups": "Todos os grupos",
+    "noGroup": "Sem grupo",
+    "pickEmployee": "Escolha um funcionário",
+    "pickEmployeeHint": "Escolha o período e o funcionário para ver o registro.",
+    "downloadPdf": "Baixar PDF",
+    "downloadExcel": "Baixar Excel",
+    "reportError": "Não foi possível gerar o relatório.",
+    "periodClosedHint": "Este período está fechado: não é possível fazer ajustes. Reabra-o em Cadastros › Períodos.",
+    "holiday": "Feriado",
+    "totalHrsMin": "TOTAL Hrs/Min",
+    "fromTo": "de {{from}} a {{to}}",
+    "noPeriods": "Ainda não há períodos: importe o arquivo do relógio de ponto.",
+    "yes": "Sim",
+    "no": "Não",
+    "year": "Ano",
+    "month": "Mês",
+    "columns": {
+      "date": "Data",
+      "entryAm": "Ent manhã",
+      "exitAm": "Saí manhã",
+      "entryPm": "Ent tarde",
+      "exitPm": "Saí tarde",
+      "lateAm": "Atraso manhã",
+      "latePm": "Atraso tarde",
+      "lateTotal": "Total atrasos",
+      "worked": "Horas trabalhadas",
+      "observation": "Observação",
+      "rawMarks": "Marcações do relógio",
+      "issues": "Inconsistências"
+    },
+    "totals": {
+      "lateCount": "Quantidade de atrasos",
+      "missingEntries": "Entradas não marcadas",
+      "missingExits": "Saídas não marcadas",
+      "unmarkedDays": "Dias não marcados",
+      "unmarkedHalfDays": "Meios dias não marcados",
+      "justifiedDays": "Dias justificados",
+      "pending": "A revisar"
+    },
+    "issues": {
+      "MARCAS_EXTRA": "Marcações a mais",
+      "DUPLICADA": "Marcação repetida",
+      "RECESO_CORTO": "Intervalo curto",
+      "HORA_INUSUAL": "Hora incomum",
+      "FALTA_MARCA": "Falta marcação",
+      "SIN_MARCAS": "Sem marcações",
+      "MARCAS_DIA_NO_LABORAL": "Marcou em dia não útil"
+    },
+    "justifications": {
+      "PERMISO": "Permissão",
+      "COMISION": "Comissão",
+      "BAJA_MEDICA": "Atestado médico",
+      "VACACION": "Férias",
+      "OLVIDO_MARCAR": "Esqueceu de marcar",
+      "FALLA_BIOMETRICO": "Falha do relógio",
+      "OTRO": "Outro"
+    },
+    "adjust": {
+      "title": "Ajustar dia · {{name}}",
+      "remove": "Remover ajuste",
+      "rawMarks": "Relógio",
+      "noRawMarks": "sem marcações",
+      "overrideMarks": "Corrigir as marcações",
+      "overrideHint": "Estes horários substituem os do relógio apenas no cálculo; os originais são mantidos.",
+      "justification": "Justificativa",
+      "noJustification": "Sem justificativa",
+      "excuseLateAm": "Não contar o atraso da manhã",
+      "excuseLatePm": "Não contar o atraso da tarde",
+      "excuseMissing": "Não contar as marcações que faltam (nem o dia sem marcar)",
+      "reason": "Motivo",
+      "timeFormat": "Formato HH:mm",
+      "removed": "Ajuste removido.",
+      "marksCorrected": "Marcações corrigidas",
+      "lateExcused": "Atraso justificado"
+    },
+    "employeeMonth": {
+      "subtitle": "Registro da jornada de trabalho: as células amarelas são marcações que faltam.",
+      "clickHint": "Clique em um dia para corrigi-lo ou justificá-lo."
+    },
+    "import": {
+      "subtitle": "Envie o arquivo exportado pelo relógio de ponto (.xls). Enviar um mês de novo substitui as marcações; os ajustes do RH são mantidos.",
+      "change": "clique para trocar",
+      "drop": "Arraste aqui o arquivo do relógio ou clique para escolhê-lo",
+      "formats": ".xls do relógio ou .xlsx, até 10 MB",
+      "upload": "Importar",
+      "uploading": "Importando…",
+      "done": "Arquivo importado.",
+      "error": "Não foi possível importar o arquivo.",
+      "resultTitle": "{{file}} foi importado",
+      "dates": "Datas",
+      "employees": "Funcionários",
+      "days": "Dias",
+      "marks": "Marcações",
+      "periods": "Períodos",
+      "newEmployeesTitle": "{{count}} funcionários novos: atribua o grupo e decida se aparecem nos relatórios.",
+      "goEmployees": "Ir para Funcionários",
+      "renamed": "Nome mudou no relógio",
+      "history": "Importações anteriores",
+      "importedAt": "Data",
+      "file": "Arquivo",
+      "newEmployees": "Novos",
+      "importedBy": "Importado por"
+    },
+    "issuesPage": {
+      "subtitle": "Dias que o sistema não conseguiu resolver sozinho. Clique em um para corrigi-lo ou justificá-lo.",
+      "includeReviewed": "Mostrar também os revisados",
+      "empty": "Não há inconsistências para revisar.",
+      "count": "{{count}} dias",
+      "reviewed": "Revisado"
+    },
+    "summary": {
+      "subtitle": "Resumo do controle de frequência por funcionário, como a planilha mensal do RH.",
+      "downloadSummaryExcel": "Resumo em Excel",
+      "downloadSummaryPdf": "Resumo em PDF",
+      "downloadEmployeesPdf": "Registro de todos (PDF)",
+      "downloadEmployeesExcel": "Registro de todos (Excel)",
+      "number": "Nº",
+      "code": "COD",
+      "name": "Nome completo",
+      "lateTime": "Tempo de atraso",
+      "noteExits": "* Saídas não marcadas: como se tivessem saído antes do horário de saída da manhã e da tarde.",
+      "noteDays": "** Dias não marcados: não marcam o dia todo, como se não tivessem vindo trabalhar. Meio dia: a manhã ou a tarde inteira.",
+      "notePending": "A revisar: dias com inconsistências que ninguém revisou ainda. O justificado não é contado."
+    },
+    "accumulated": {
+      "subtitle": "Atrasos acumulados de vários meses, do mais ao menos atrasado.",
+      "from": "De",
+      "to": "Até",
+      "total": "Total acumulado",
+      "invalidRange": "Escolha um período inicial anterior ou igual ao final (até 24 meses)."
+    },
+    "employees": {
+      "subtitle": "São criados ao importar (pelo AC-No do relógio). Atribua o grupo e escolha quem aparece nos relatórios.",
+      "search": "Buscar por nome ou AC-No",
+      "inReports": "Nos relatórios",
+      "inReportsLong": "Aparece no registro e nos resumos",
+      "deviceCode": "AC-No",
+      "deviceName": "Nome no relógio",
+      "editTitle": "Editar funcionário",
+      "deviceInfo": "AC-No {{code}} · no relógio: {{name}}",
+      "reportName": "Nome para os relatórios"
+    },
+    "groups": {
+      "subtitle": "Grupos usados para separar os relatórios. A ordem define como aparecem.",
+      "new": "Novo grupo",
+      "order": "Ordem",
+      "employees": "Funcionários",
+      "deleteTitle": "Excluir grupo",
+      "editTitle": "Editar grupo",
+      "newTitle": "Novo grupo"
+    },
+    "holidays": {
+      "subtitle": "Nesse dia não se contam atrasos nem faltas. Cadastre aqui os feriados móveis e decretados.",
+      "new": "Novo feriado",
+      "deleteTitle": "Excluir feriado",
+      "editTitle": "Editar feriado",
+      "newTitle": "Novo feriado"
+    },
+    "periods": {
+      "subtitle": "Meses de controle (do dia 21 ao 20). São criados ao importar; feche-os quando o mês estiver revisado.",
+      "new": "Novo período",
+      "start": "De",
+      "end": "Até",
+      "days": "Dias",
+      "reopenToEdit": "Reabra-o para alterar as datas.",
+      "close": "Fechar",
+      "reopen": "Reabrir",
+      "closeTitle": "Fechar período",
+      "closeMessage": "Fechar {{name}}? Nada dessas datas poderá ser importado ou ajustado até reabri-lo.",
+      "editTitle": "Editar período",
+      "newTitle": "Novo período",
+      "formHint": "As datas não podem se cruzar com outro período."
+    },
+    "settings": {
+      "subtitle": "Horário de trabalho e regras do cálculo. Uma mudança aparece na hora em todas as telas e relatórios.",
+      "schedule": "Horário",
+      "scheduleHint": "Sem intervalo é jornada contínua (como a sexta-feira): só contam a entrada e a saída.",
+      "day": "Dia",
+      "working": "Útil",
+      "start": "Entrada",
+      "breakStart": "Início intervalo",
+      "breakEnd": "Fim intervalo",
+      "end": "Saída",
+      "rules": "Regras",
+      "tolerance": "Tolerância (min)",
+      "toleranceHint": "Passada a tolerância, o atraso conta desde a hora de entrada.",
+      "duplicateWindow": "Marcação repetida (min)",
+      "duplicateWindowHint": "Duas marcações mais próximas que isto são a mesma.",
+      "minBreak": "Intervalo mínimo (min)",
+      "minBreakHint": "Um intervalo mais curto é marcado para revisar.",
+      "cutoff": "Dia de corte",
+      "cutoffHint": "Com 20, agosto vai de 21/07 a 20/08.",
+      "middayFrom": "Meio-dia desde",
+      "middayFromHint": "Antes desta hora, a primeira marcação é a entrada.",
+      "afternoonExitFrom": "Saída da tarde desde",
+      "afternoonExitFromHint": "A partir desta hora, a marcação é a saída.",
+      "earliest": "Hora normal desde",
+      "latest": "Hora normal até",
+      "oddHint": "Marcações fora deste intervalo são marcadas como incomuns."
+    },
+    "weekdays": {
+      "1": "Seg",
+      "2": "Ter",
+      "3": "Qua",
+      "4": "Qui",
+      "5": "Sex",
+      "6": "Sáb",
+      "7": "Dom"
+    },
+    "weekdaysLong": {
+      "1": "Segunda",
+      "2": "Terça",
+      "3": "Quarta",
+      "4": "Quinta",
+      "5": "Sexta",
+      "6": "Sábado",
+      "7": "Domingo"
+    }
+  }
+}

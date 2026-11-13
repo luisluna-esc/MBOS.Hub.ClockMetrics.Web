@@ -1,0 +1,98 @@
+<div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-0.5">
+    <h1 class="text-xl font-semibold text-foreground">{{ 'nav.issues' | translate }}</h1>
+    <p class="text-sm text-muted-foreground">{{ 'attendance.issuesPage.subtitle' | translate }}</p>
+  </div>
+
+  <div class="grid grid-cols-1 items-end gap-3 sm:grid-cols-3 lg:max-w-4xl">
+    <app-select [label]="'attendance.period' | translate" [options]="periodOptions()" [ngModel]="periodId()" (ngModelChange)="periodId.set($event)" />
+    <app-select [label]="'attendance.group' | translate" [options]="groupOptions()" [ngModel]="groupId()" (ngModelChange)="groupId.set($event)" [placeholder]="'attendance.allGroups' | translate" />
+    <div class="pb-2">
+      <app-checkbox [ngModel]="includeReviewed()" (ngModelChange)="includeReviewed.set($event)">{{ 'attendance.issuesPage.includeReviewed' | translate }}</app-checkbox>
+    </div>
+  </div>
+
+  @if (counts().length) {
+    <div class="flex flex-wrap gap-2">
+      @for (item of counts(); track item.type) {
+        <button
+          type="button"
+          class="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+          [class]="issueType() === item.type ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-foreground hover:bg-surface'"
+          (click)="toggleType(item.type)"
+        >
+          {{ 'attendance.issues.' + item.type | translate }} · {{ item.count }}
+        </button>
+      }
+    </div>
+  }
+
+  @if (selectedPeriod()?.isClosed) {
+    <p class="rounded-md border border-border bg-surface px-3 py-2 text-sm text-muted-foreground">{{ 'attendance.periodClosedHint' | translate }}</p>
+  }
+
+  @if (errorCode()) {
+    <div class="rounded-lg border border-border">
+      <app-error-state [code]="errorCode()!" [actionLabel]="'common.retry' | translate" (action)="reload()" />
+    </div>
+  } @else if (loading()) {
+    <app-skeleton height="20rem" />
+  } @else if (!visibleRows().length) {
+    <div class="flex h-40 items-center justify-center rounded-lg border border-dashed border-border bg-surface text-sm text-muted-foreground">
+      {{ 'attendance.issuesPage.empty' | translate }}
+    </div>
+  } @else {
+    <p class="text-xs text-muted-foreground">{{ 'attendance.issuesPage.count' | translate: { count: visibleRows().length } }}</p>
+    <div class="overflow-x-auto rounded-lg border border-border">
+      <table class="w-full text-foreground min-w-[900px] text-sm">
+        <thead class="bg-primary text-primary-foreground">
+          <tr>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.columns.date' | translate }}</th>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.employee' | translate }}</th>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.columns.rawMarks' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.entryAm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.exitAm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.entryPm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.exitPm' | translate }}</th>
+            <th class="px-2 py-2 font-medium">{{ 'attendance.columns.lateTotal' | translate }}</th>
+            <th class="px-2 py-2 text-left font-medium">{{ 'attendance.columns.issues' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of visibleRows(); track row.employee.employeeId + row.day.date) {
+            <tr [class]="canEdit() ? 'cursor-pointer border-t border-border hover:bg-surface' : 'border-t border-border'" (click)="open(row)">
+              <td class="whitespace-nowrap px-2 py-1 text-muted-foreground">{{ dmy(row.day.date) }} - {{ weekdayKey(row.day.dayOfWeek) | translate }}</td>
+              <td class="px-2 py-1">
+                <a
+                  class="font-medium text-foreground hover:underline"
+                  routerLink="/attendance/employee"
+                  [queryParams]="{ period: periodId(), employee: row.employee.employeeId }"
+                  (click)="$event.stopPropagation()"
+                >{{ row.employee.fullName }}</a>
+                @if (row.employee.workGroupName) {
+                  <span class="ml-1 text-xs text-muted-foreground">{{ row.employee.workGroupName }}</span>
+                }
+              </td>
+              <td class="px-2 py-1 font-mono text-xs text-muted-foreground">{{ row.day.rawMarks || '—' }}</td>
+              <td class="px-2 py-1 text-center font-mono">{{ hhmm(row.day.entryAm) }}</td>
+              <td class="px-2 py-1 text-center font-mono">{{ row.day.isContinuous ? '' : hhmm(row.day.exitAm) }}</td>
+              <td class="px-2 py-1 text-center font-mono">{{ row.day.isContinuous ? '' : hhmm(row.day.entryPm) }}</td>
+              <td class="px-2 py-1 text-center font-mono">{{ hhmm(row.day.exitPm) }}</td>
+              <td class="px-2 py-1 text-center font-mono">{{ hm(row.day.lateMinutes) }}</td>
+              <td class="px-2 py-1">
+                <div class="flex flex-wrap gap-1">
+                  @if (row.day.isAdjusted) {
+                    <app-badge tone="info">{{ 'attendance.issuesPage.reviewed' | translate }}</app-badge>
+                  }
+                  @for (issue of row.day.issues; track issue) {
+                    <app-badge [tone]="issue === 'SIN_MARCAS' || issue === 'FALTA_MARCA' ? 'neutral' : 'warning'">{{ 'attendance.issues.' + issue | translate }}</app-badge>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

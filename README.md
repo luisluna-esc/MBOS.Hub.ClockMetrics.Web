@@ -1,59 +1,40 @@
-# MBOSHubClockMetricsWeb
+# ClockMetrics (frontend)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.30.
-
-## Development server
-
-To start a local development server, run:
+Angular 20 + Tailwind 4. Sale de la base común de FundTrack: login con refresh token, layout con
+menú por rol, administración (usuarios, roles, auditoría), tema claro/oscuro, i18n (es/en/pt),
+atajos de teclado y los componentes de `shared/`. El backend está en `MBOS.Hub.ClockMetrics`.
 
 ```bash
-ng serve
+npm install
+npm start          # http://localhost:4200, apunta al backend en http://localhost:5152/api
+npm run build      # producción: /api lo resuelve nginx (nginx.conf)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Se entra con `admin.mbos` / `mbos12345` (ver `Scripts/seedData.sql` del backend).
 
-## Code scaffolding
+## Dónde va cada cosa
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Carpeta | Qué tiene |
+|---|---|
+| `src/app/core` | Sesión, interceptor, `ApiService`, menú, tema, i18n, toasts, diálogos, atajos |
+| `src/app/shared` | Componentes (tabla, filtros, inputs, diálogos, gráficas...), `ListPage` y `FormDialog` |
+| `src/app/layout/shell` | Barra lateral y encabezado |
+| `src/app/features` | Pantallas: `attendance` (importar, registro por empleado, incoherencias, reportes, catálogos), `auth`, `admin`, `placeholder`, `style-guide` |
+| `src/styles/theme.scss` | Único lugar de los colores (tokens) |
+| `public/i18n` | Textos en es, en y pt |
 
-```bash
-ng generate component component-name
-```
+## Agregar una pantalla de lista
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+El modelo es `features/admin/roles`: una lista que extiende `ListPage<T>` (usa la plantilla
+`shared/list-page/list-page.html`) y un diálogo que extiende `FormDialog`. Después:
 
-```bash
-ng generate --help
-```
+1. La ruta en `app.routes.ts`.
+2. El menú en el backend (`menu` y `menu_role`); el texto sale de `translation_key` (ej. `nav.xxx`).
+3. Los textos en los tres archivos de `public/i18n`.
 
-## Building
+## Pendiente
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Logo propio: por ahora se usan los de MBOS (`public/img/MBOS-*.png`) en login, barra lateral y
+  guía de estilos.
+- El dashboard: Inicio muestra la pantalla provisional.
+- El despliegue: hay Dockerfile y nginx.conf, pero falta elegir puertos en el servidor.
