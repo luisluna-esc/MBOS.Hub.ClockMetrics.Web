@@ -13,7 +13,7 @@ import { Table, TableAction, TableColumn } from '../../../shared/components/tabl
 import { FormDialog } from '../../../shared/list-page/form-dialog';
 import { HeaderButton, ListPage, TableRow } from '../../../shared/list-page/list-page';
 import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
-import { groupOptions } from '../attendance-format';
+import { groupFilterOptions, groupOptions } from '../attendance-format';
 import { Employee } from '../attendance.models';
 import { AttendanceLookups, EmployeeService } from '../attendance.services';
 
@@ -55,7 +55,7 @@ export class EmployeesList extends ListPage<Employee> {
 
   protected readonly filterFields = computed<FilterField[]>(() => [
     { key: 'search', label: this.t('attendance.employees.search'), type: 'text' },
-    { key: 'group', label: this.t('attendance.group'), type: 'select', options: groupOptions(this.lookups.groups()) },
+    { key: 'group', label: this.t('attendance.group'), type: 'select', options: groupFilterOptions(this.lookups.groups(), (k) => this.t(k)) },
     {
       key: 'include',
       label: this.t('attendance.employees.inReports'),
@@ -115,7 +115,7 @@ export interface EmployeeFormDialogData {
           {{ 'attendance.employees.deviceInfo' | translate: { code: employee.deviceCode, name: employee.deviceName } }}
         </p>
         <app-input formControlName="fullName" [label]="'attendance.employees.reportName' | translate" [required]="true" [maxLength]="150" />
-        <app-select formControlName="workGroupId" [label]="'attendance.group' | translate" [options]="groupOptions()" [placeholder]="'attendance.noGroup' | translate" />
+        <app-select formControlName="workGroupId" [label]="'attendance.group' | translate" [options]="groupOptions()" />
         <app-checkbox formControlName="includeInReports">{{ 'attendance.employees.inReportsLong' | translate }}</app-checkbox>
         <app-checkbox formControlName="isActive">{{ 'catalogs.active' | translate }}</app-checkbox>
       </form>
@@ -128,11 +128,11 @@ export class EmployeeFormDialog extends FormDialog {
   private readonly employeeService = inject(EmployeeService);
   private readonly lookups = inject(AttendanceLookups);
 
-  protected readonly groupOptions = computed(() => groupOptions(this.lookups.groups()));
+  protected readonly groupOptions = computed(() => groupOptions(this.lookups.groups(), (k) => this.languageService.t(k)));
 
   protected readonly form = new FormGroup({
     fullName: new FormControl(this.employee.fullName, { nonNullable: true, validators: Validators.required }),
-    workGroupId: new FormControl<string | null>(this.employee.workGroupId ? String(this.employee.workGroupId) : null),
+    workGroupId: new FormControl<string | null>(this.employee.workGroupId ? String(this.employee.workGroupId) : ''),
     includeInReports: new FormControl(this.employee.includeInReports, { nonNullable: true }),
     isActive: new FormControl(this.employee.isActive, { nonNullable: true }),
   });

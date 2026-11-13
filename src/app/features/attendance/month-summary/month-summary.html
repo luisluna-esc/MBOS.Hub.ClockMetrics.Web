@@ -24,7 +24,7 @@
 
   <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:max-w-3xl">
     <app-select [label]="'attendance.period' | translate" [options]="periodOptions()" [ngModel]="periodId()" (ngModelChange)="periodId.set($event)" />
-    <app-select [label]="'attendance.group' | translate" [options]="groupOptions()" [ngModel]="groupId()" (ngModelChange)="groupId.set($event)" [placeholder]="'attendance.allGroups' | translate" />
+    <app-select [label]="'attendance.group' | translate" [options]="groupOptions()" [ngModel]="groupId()" (ngModelChange)="groupId.set($event)" />
   </div>
 
   @if (errorCode()) {
@@ -85,7 +85,16 @@
               </tr>
             }
           } @empty {
-            <tr><td colspan="11" class="px-2 py-6 text-center text-muted-foreground">{{ 'table.empty' | translate }}</td></tr>
+            <tr>
+              <td colspan="11" class="px-2 py-6 text-center text-muted-foreground">
+                @if (groupId()) {
+                  {{ 'attendance.groupEmpty' | translate }}
+                  <a class="ml-1 font-medium text-primary underline" routerLink="/catalogs/employees">{{ 'attendance.import.goEmployees' | translate }}</a>
+                } @else {
+                  {{ 'table.empty' | translate }}
+                }
+              </td>
+            </tr>
           }
         </tbody>
       </table>

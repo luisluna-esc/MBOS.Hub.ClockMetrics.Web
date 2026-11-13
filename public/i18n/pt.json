@@ -404,7 +404,11 @@
     },
     "employeeMonth": {
       "subtitle": "Registro da jornada de trabalho: as células amarelas são marcações que faltam.",
-      "clickHint": "Clique em um dia para corrigi-lo ou justificá-lo."
+      "clickHint": "Clique em um dia para corrigi-lo ou justificá-lo.",
+      "downloadAllPdf": "Registro de todos (PDF)",
+      "downloadAllExcel": "Registro de todos (Excel)",
+      "count": "{{count}} funcionários",
+      "onlyThis": "Ver só este funcionário"
     },
     "import": {
       "subtitle": "Envie o arquivo exportado pelo relógio de ponto (.xls). Enviar um mês de novo substitui as marcações; os ajustes do RH são mantidos.",
@@ -421,14 +425,19 @@
       "days": "Dias",
       "marks": "Marcações",
       "periods": "Períodos",
-      "newEmployeesTitle": "{{count}} funcionários novos: atribua o grupo e decida se aparecem nos relatórios.",
+      "newEmployeesTitle": "Funcionários novos: {{count}}. Atribua o grupo e decida se aparecem nos relatórios.",
       "goEmployees": "Ir para Funcionários",
       "renamed": "Nome mudou no relógio",
       "history": "Importações anteriores",
       "importedAt": "Data",
       "file": "Arquivo",
       "newEmployees": "Novos",
-      "importedBy": "Importado por"
+      "importedBy": "Importado por",
+      "changedTitle": "Dias corrigidos à mão que mudaram no relógio: {{count}}",
+      "changedHint": "A correção do RH continua valendo. Revise cada dia: se o relógio agora traz a marcação certa, remova o ajuste; senão, mantenha.",
+      "before": "Relógio antes",
+      "now": "Relógio agora",
+      "corrected": "Correção do RH"
     },
     "issuesPage": {
       "subtitle": "Dias que o sistema não conseguiu resolver sozinho. Clique em um para corrigi-lo ou justificá-lo.",
@@ -544,6 +553,8 @@
       "5": "Sexta",
       "6": "Sábado",
       "7": "Domingo"
-    }
+    },
+    "groupEmpty": "Não há funcionários neste grupo. Atribua o grupo em Cadastros › Funcionários.",
+    "allEmployees": "Todos os funcionários"
   }
 }

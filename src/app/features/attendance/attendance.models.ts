@@ -129,6 +129,18 @@ export interface ImportResult {
   renamedEmployees: string[];
   periods: Period[];
   warnings: string[];
+  /** Días corregidos a mano donde el reloj ahora trae otras marcas. */
+  adjustedDaysChanged: ChangedAdjustedDay[];
+}
+
+export interface ChangedAdjustedDay {
+  employeeId: number;
+  employeeName: string;
+  date: string;
+  previousMarks: string;
+  newMarks: string;
+  correctedMarks: string;
+  reason: string;
 }
 
 export interface AttendanceImport {

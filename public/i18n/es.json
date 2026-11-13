@@ -404,7 +404,11 @@
     },
     "employeeMonth": {
       "subtitle": "Registro jornada laboral: las casillas en amarillo son marcas que faltan.",
-      "clickHint": "Haz clic en un día para corregirlo o justificarlo."
+      "clickHint": "Haz clic en un día para corregirlo o justificarlo.",
+      "downloadAllPdf": "Registro de todos (PDF)",
+      "downloadAllExcel": "Registro de todos (Excel)",
+      "count": "{{count}} empleados",
+      "onlyThis": "Ver solo este empleado"
     },
     "import": {
       "subtitle": "Sube el archivo que exporta el reloj biométrico (.xls). Volver a subir un mes reemplaza sus marcas; los ajustes de RR.HH. se conservan.",
@@ -421,14 +425,19 @@
       "days": "Días",
       "marks": "Marcas",
       "periods": "Períodos",
-      "newEmployeesTitle": "{{count}} empleados nuevos: asígnales su grupo y decide si salen en los reportes.",
+      "newEmployeesTitle": "Empleados nuevos: {{count}}. Asígnales su grupo y decide si salen en los reportes.",
       "goEmployees": "Ir a Empleados",
       "renamed": "Cambió el nombre en el biométrico",
       "history": "Importaciones anteriores",
       "importedAt": "Fecha",
       "file": "Archivo",
       "newEmployees": "Nuevos",
-      "importedBy": "Importado por"
+      "importedBy": "Importado por",
+      "changedTitle": "Días corregidos a mano que cambiaron en el reloj: {{count}}",
+      "changedHint": "La corrección de RR.HH. sigue mandando. Revisa cada día: si el reloj ahora trae la marca correcta, quita el ajuste; si no, déjalo.",
+      "before": "Reloj antes",
+      "now": "Reloj ahora",
+      "corrected": "Corrección de RR.HH."
     },
     "issuesPage": {
       "subtitle": "Días que el sistema no pudo resolver solo. Haz clic en uno para corregirlo o justificarlo.",
@@ -544,6 +553,8 @@
       "5": "Viernes",
       "6": "Sábado",
       "7": "Domingo"
-    }
+    },
+    "groupEmpty": "No hay empleados en este grupo. Asígnales el grupo en Catálogos › Empleados.",
+    "allEmployees": "Todos los empleados"
   }
 }

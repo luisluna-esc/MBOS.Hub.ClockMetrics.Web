@@ -404,7 +404,11 @@
     },
     "employeeMonth": {
       "subtitle": "Work day record: yellow cells are missing marks.",
-      "clickHint": "Click a day to correct or justify it."
+      "clickHint": "Click a day to correct or justify it.",
+      "downloadAllPdf": "Everyone’s record (PDF)",
+      "downloadAllExcel": "Everyone’s record (Excel)",
+      "count": "{{count}} employees",
+      "onlyThis": "Show only this employee"
     },
     "import": {
       "subtitle": "Upload the file exported by the time clock (.xls). Uploading a month again replaces its marks; HR adjustments are kept.",
@@ -421,14 +425,19 @@
       "days": "Days",
       "marks": "Marks",
       "periods": "Periods",
-      "newEmployeesTitle": "{{count}} new employees: assign their group and decide if they appear in reports.",
+      "newEmployeesTitle": "New employees: {{count}}. Assign their group and decide if they appear in reports.",
       "goEmployees": "Go to Employees",
       "renamed": "Name changed in the time clock",
       "history": "Previous imports",
       "importedAt": "Date",
       "file": "File",
       "newEmployees": "New",
-      "importedBy": "Imported by"
+      "importedBy": "Imported by",
+      "changedTitle": "Manually corrected days that changed in the time clock: {{count}}",
+      "changedHint": "The HR correction still applies. Review each day: if the time clock now has the right mark, remove the adjustment; otherwise keep it.",
+      "before": "Clock before",
+      "now": "Clock now",
+      "corrected": "HR correction"
     },
     "issuesPage": {
       "subtitle": "Days the system could not resolve on its own. Click one to correct or justify it.",
@@ -544,6 +553,8 @@
       "5": "Friday",
       "6": "Saturday",
       "7": "Sunday"
-    }
+    },
+    "groupEmpty": "There are no employees in this group. Assign it in Catalogs › Employees.",
+    "allEmployees": "All employees"
   }
 }

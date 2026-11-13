@@ -35,7 +35,7 @@
   }
 
   @if (result(); as r) {
-    <div class="flex flex-col gap-3 rounded-lg border border-success/40 bg-success/5 p-4">
+    <div class="flex flex-col gap-3 rounded-lg border border-success/40 bg-success/5 p-4 text-foreground">
       <p class="text-sm font-semibold text-success">{{ 'attendance.import.resultTitle' | translate: { file: r.fileName } }}</p>
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <div><span class="block text-xs text-muted-foreground">{{ 'attendance.import.dates' | translate }}</span><span class="text-sm font-semibold">{{ dmy(r.firstDate) }} – {{ dmy(r.lastDate) }}</span></div>
@@ -46,7 +46,7 @@
       <div class="flex flex-wrap gap-2 text-sm">
         <span class="text-muted-foreground">{{ 'attendance.import.periods' | translate }}:</span>
         @for (p of r.periods; track p.attendancePeriodId) {
-          <a class="font-medium text-primary underline" routerLink="/attendance/issues" [queryParams]="{ period: p.attendancePeriodId }">
+          <a class="font-medium text-foreground underline" routerLink="/attendance/issues" [queryParams]="{ period: p.attendancePeriodId }">
             {{ monthKey(p.month) | translate }} {{ p.year }} ({{ dmy(p.startDate) }} – {{ dmy(p.endDate) }})
           </a>
         }
@@ -55,7 +55,41 @@
         <div class="rounded-md border border-warning/40 bg-warning/10 p-3 text-sm">
           <p class="font-semibold text-warning">{{ 'attendance.import.newEmployeesTitle' | translate: { count: r.newEmployees.length } }}</p>
           <p class="mt-1 text-xs text-foreground">{{ r.newEmployees.join(', ') }}</p>
-          <a class="mt-2 inline-block text-xs font-medium text-primary underline" routerLink="/catalogs/employees">{{ 'attendance.import.goEmployees' | translate }}</a>
+          <a class="mt-2 inline-block text-xs font-medium text-foreground underline" routerLink="/catalogs/employees">{{ 'attendance.import.goEmployees' | translate }}</a>
+        </div>
+      }
+      @if (r.adjustedDaysChanged.length) {
+        <div class="rounded-md border border-warning/40 bg-warning/10 p-3 text-sm">
+          <p class="font-semibold text-warning">{{ 'attendance.import.changedTitle' | translate: { count: r.adjustedDaysChanged.length } }}</p>
+          <p class="mt-1 text-xs text-foreground">{{ 'attendance.import.changedHint' | translate }}</p>
+          <div class="mt-2 overflow-x-auto">
+            <table class="w-full min-w-[720px] text-xs text-foreground">
+              <thead class="text-muted-foreground">
+                <tr>
+                  <th class="px-2 py-1 text-left font-medium">{{ 'attendance.columns.date' | translate }}</th>
+                  <th class="px-2 py-1 text-left font-medium">{{ 'attendance.employee' | translate }}</th>
+                  <th class="px-2 py-1 text-left font-medium">{{ 'attendance.import.before' | translate }}</th>
+                  <th class="px-2 py-1 text-left font-medium">{{ 'attendance.import.now' | translate }}</th>
+                  <th class="px-2 py-1 text-left font-medium">{{ 'attendance.import.corrected' | translate }}</th>
+                  <th class="px-2 py-1 text-left font-medium">{{ 'attendance.adjust.reason' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (day of r.adjustedDaysChanged; track day.employeeId + day.date) {
+                  <tr class="border-t border-warning/20">
+                    <td class="whitespace-nowrap px-2 py-1">{{ dmy(day.date) }}</td>
+                    <td class="px-2 py-1">
+                      <a class="font-medium underline" routerLink="/attendance/employee" [queryParams]="{ period: periodIdOf(day.date), employee: day.employeeId }">{{ day.employeeName }}</a>
+                    </td>
+                    <td class="px-2 py-1 font-mono text-muted-foreground">{{ day.previousMarks || '—' }}</td>
+                    <td class="px-2 py-1 font-mono font-semibold">{{ day.newMarks || '—' }}</td>
+                    <td class="px-2 py-1 font-mono">{{ day.correctedMarks || '—' }}</td>
+                    <td class="px-2 py-1">{{ day.reason }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       }
       @if (r.renamedEmployees.length) {

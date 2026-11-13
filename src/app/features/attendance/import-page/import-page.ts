@@ -114,6 +114,11 @@ export class ImportPage {
     void this.loadHistory();
   }
 
+  /** Período de la importación que contiene la fecha (para el enlace al registro del empleado). */
+  protected periodIdOf(date: string): number | null {
+    return this.result()?.periods.find((p) => p.startDate <= date && p.endDate >= date)?.attendancePeriodId ?? null;
+  }
+
   protected t(key: string, params?: Record<string, string | number>): string {
     return this.languageService.t(key, params);
   }

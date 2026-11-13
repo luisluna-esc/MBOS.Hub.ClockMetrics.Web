@@ -7,7 +7,7 @@ import { ErrorState } from '../../../shared/components/error-state/error-state';
 import { Select } from '../../../shared/components/select/select';
 import { Skeleton } from '../../../shared/components/skeleton/skeleton';
 import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
-import { groupOptions, hm, monthKey, periodOptions } from '../attendance-format';
+import { groupFilterOptions, hm, monthKey, periodOptions } from '../attendance-format';
 import { Accumulated as AccumulatedData, ReportFormat } from '../attendance.models';
 import { AttendanceLookups, AttendanceService } from '../attendance.services';
 
@@ -26,7 +26,7 @@ export class Accumulated {
 
   protected readonly fromId = signal<string | null>(null);
   protected readonly toId = signal<string | null>(null);
-  protected readonly groupId = signal<string | null>(null);
+  protected readonly groupId = signal<string | null>('');
   protected readonly data = signal<AccumulatedData | null>(null);
   protected readonly loading = signal(false);
   protected readonly errorCode = signal<number | null>(null);
@@ -36,7 +36,7 @@ export class Accumulated {
   protected readonly monthKey = monthKey;
 
   protected readonly periodOptions = computed(() => periodOptions(this.lookups.periods(), (k) => this.languageService.t(k)));
-  protected readonly groupOptions = computed(() => groupOptions(this.lookups.groups()));
+  protected readonly groupOptions = computed(() => groupFilterOptions(this.lookups.groups(), (k) => this.languageService.t(k)));
 
   constructor() {
     void this.init();

@@ -31,7 +31,24 @@ export function periodOptions(periods: Period[], t: (key: string) => string): Se
   }));
 }
 
-export function groupOptions(groups: WorkGroup[]): SelectOption[] {
+/** workGroupId que el backend entiende como "empleados sin grupo". */
+export const NO_GROUP = '0';
+
+/** Grupos para asignar a un empleado: "Sin grupo" (vacío) y los activos. */
+export function groupOptions(groups: WorkGroup[], t: (key: string) => string): SelectOption[] {
+  return [{ value: '', label: t('attendance.noGroup') }, ...activeGroups(groups)];
+}
+
+/**
+ * Grupos para filtrar una pantalla o un reporte: "Todos los grupos" (vacío = sin filtro, así se
+ * puede volver atrás después de elegir uno), cada grupo activo y "Sin grupo" para encontrar a los
+ * empleados que todavía no tienen grupo asignado.
+ */
+export function groupFilterOptions(groups: WorkGroup[], t: (key: string) => string): SelectOption[] {
+  return [{ value: '', label: t('attendance.allGroups') }, ...activeGroups(groups), { value: NO_GROUP, label: t('attendance.noGroup') }];
+}
+
+function activeGroups(groups: WorkGroup[]): SelectOption[] {
   return groups.filter((g) => g.isActive).map((g) => ({ value: String(g.workGroupId), label: g.name }));
 }
 

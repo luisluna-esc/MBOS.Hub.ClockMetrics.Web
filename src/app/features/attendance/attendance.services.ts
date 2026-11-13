@@ -36,6 +36,8 @@ export class AttendanceService {
 
   imports = (pageNumber: number, pageSize: number) => this.api.list<AttendanceImport>('/attendance/imports', pageNumber, pageSize);
   employeeMonth = (periodId: number, employeeId: number) => this.api.get<EmployeeMonth>(`/attendance/periods/${periodId}/employees/${employeeId}`);
+  /** Registro de todos los empleados del filtro (vista general). */
+  records = (periodId: number, filters: QueryParams = {}) => this.api.get<EmployeeMonth[]>(`/attendance/periods/${periodId}/records`, filters);
   summary = (periodId: number, filters: QueryParams = {}) => this.api.get<PeriodSummary>(`/attendance/periods/${periodId}/summary`, filters);
   issues = (periodId: number, filters: QueryParams = {}) => this.api.get<IssueRow[]>(`/attendance/periods/${periodId}/issues`, filters);
   accumulated = (fromPeriodId: number, toPeriodId: number, filters: QueryParams = {}) =>

@@ -6,7 +6,7 @@
 
   <div class="grid grid-cols-1 items-end gap-3 sm:grid-cols-3 lg:max-w-4xl">
     <app-select [label]="'attendance.period' | translate" [options]="periodOptions()" [ngModel]="periodId()" (ngModelChange)="periodId.set($event)" />
-    <app-select [label]="'attendance.group' | translate" [options]="groupOptions()" [ngModel]="groupId()" (ngModelChange)="groupId.set($event)" [placeholder]="'attendance.allGroups' | translate" />
+    <app-select [label]="'attendance.group' | translate" [options]="groupOptions()" [ngModel]="groupId()" (ngModelChange)="groupId.set($event)" />
     <div class="pb-2">
       <app-checkbox [ngModel]="includeReviewed()" (ngModelChange)="includeReviewed.set($event)">{{ 'attendance.issuesPage.includeReviewed' | translate }}</app-checkbox>
     </div>

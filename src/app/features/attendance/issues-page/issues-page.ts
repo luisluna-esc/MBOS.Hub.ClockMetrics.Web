@@ -11,7 +11,7 @@ import { ErrorState } from '../../../shared/components/error-state/error-state';
 import { Select, SelectOption } from '../../../shared/components/select/select';
 import { Skeleton } from '../../../shared/components/skeleton/skeleton';
 import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
-import { dmy, groupOptions, hhmm, hm, periodOptions, weekdayKey } from '../attendance-format';
+import { dmy, groupFilterOptions, hhmm, hm, periodOptions, weekdayKey } from '../attendance-format';
 import { IssueRow } from '../attendance.models';
 import { AttendanceLookups, AttendanceService } from '../attendance.services';
 import { DayAdjustDialog, DayAdjustDialogData } from '../day-adjust-dialog/day-adjust-dialog';
@@ -38,7 +38,7 @@ export class IssuesPage {
   readonly period = input<string | undefined>();
 
   protected readonly periodId = signal<string | null>(null);
-  protected readonly groupId = signal<string | null>(null);
+  protected readonly groupId = signal<string | null>('');
   protected readonly issueType = signal<string | null>(null);
   protected readonly includeReviewed = signal(false);
   protected readonly rows = signal<IssueRow[]>([]);
@@ -52,7 +52,7 @@ export class IssuesPage {
   protected readonly weekdayKey = weekdayKey;
 
   protected readonly periodOptions = computed(() => periodOptions(this.lookups.periods(), (k) => this.languageService.t(k)));
-  protected readonly groupOptions = computed(() => groupOptions(this.lookups.groups()));
+  protected readonly groupOptions = computed(() => groupFilterOptions(this.lookups.groups(), (k) => this.languageService.t(k)));
   protected readonly issueOptions = computed<SelectOption[]>(() =>
     ISSUE_TYPES.map((type) => ({ value: type, label: this.languageService.t(`attendance.issues.${type}`) }))
   );
